@@ -36,8 +36,6 @@ for (var i = 0; i < buttons.length; i++) {
 populate();
 
 
-  
-
 //function to clear the array and add all the new buttons again
 
 
@@ -47,32 +45,30 @@ populate();
     event.preventDefault();
 //variable for the button click
 
-var newButton = $('#button-input').val().trim();
+ newButton = $('#button-input').val().trim();
 //Adding the input to the array
 buttons.push(newButton);
- 
+console.log(buttons);
+
 populate();
 
 
   });
 
-  //Now adding the function to pull the gif info
+//on click we pull from the API and populate the gifs
 
-  $(".letter-button").on("click", function() {
-    console.log("meow")
-    
+  $(".button-selection").on("click", ".letter-button", function() {
     //Pulling the gif based on the click
     var gif = $(this).attr("data-letter");
     //The url that will call the API, copied from example in class
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-
+    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
       })
       .then(function(response) {
-        var results = response.data;
+         var results = response.data;
         console.log(results)
 
         //Running the for loop to add the number of gifs returned which is 10
@@ -95,7 +91,8 @@ populate();
       });
   });
 
+
+
   //Items Open
-  //1. need to add the button from the form input
-  //2. Gifs need to be paused when they come in
+  //1. Gifs need to be paused when they come in
   //3. 
