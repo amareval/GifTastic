@@ -8,6 +8,9 @@ var area = $('.body');
 var addButtons = area.find(".button-selection")
 
 //loop to create the buttons
+function populate(){
+
+  $(addButtons).empty();
 
 for (var i = 0; i < buttons.length; i++) {
 
@@ -29,17 +32,41 @@ for (var i = 0; i < buttons.length; i++) {
     addButtons.append(letterBtn);
 
   }
+};
+populate();
 
 
+  
+
+//function to clear the array and add all the new buttons again
+
+
+
+  //Function to add buttons to 
+  $('#add-button').on('click', function(event){
+    event.preventDefault();
+//variable for the button click
+
+var newButton = $('#button-input').val().trim();
+//Adding the input to the array
+buttons.push(newButton);
+ 
+populate();
+
+
+  });
 
   //Now adding the function to pull the gif info
 
   $(".letter-button").on("click", function() {
+    console.log("meow")
+    
     //Pulling the gif based on the click
     var gif = $(this).attr("data-letter");
     //The url that will call the API, copied from example in class
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=dc6zaTOxFJmzC&limit=10";
-    console.log(queryURL);
+
+
     $.ajax({
         url: queryURL,
         method: "GET"
