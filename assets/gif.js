@@ -81,7 +81,7 @@ populate();
           var p = $("<p>").text("Rating: " + rating);
 
           var personImage = $("<img>");
-          personImage.attr("src", results[i].images.fixed_height.url);
+          personImage.attr("src", results[i].images.fixed_height_still.url);
 
           gifDiv.prepend(p);
           gifDiv.prepend(personImage);
@@ -94,5 +94,5 @@ populate();
 
 
   //Items Open
-  //1. Gifs need to be paused when they come in
+  //1. need to get gifs to animate when we click on them
   //3. 
