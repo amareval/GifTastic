@@ -48,7 +48,6 @@ populate();
  newButton = $('#button-input').val().trim();
 //Adding the input to the array
 buttons.push(newButton);
-console.log(buttons);
 
 populate();
 
@@ -62,14 +61,12 @@ populate();
     var gif = $(this).attr("data-letter");
     //The url that will call the API, copied from example in class
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=dc6zaTOxFJmzC&limit=10";
-    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
       })
       .then(function(response) {
          var results = response.data;
-        console.log(results)
 
         //Running the for loop to add the number of gifs returned which is 10
 
@@ -120,6 +117,3 @@ populate();
 
 
 
-  //Items Open
-  //1. need to get gifs to animate when we click on them
-  //3. 
