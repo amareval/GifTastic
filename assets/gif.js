@@ -79,9 +79,19 @@ populate();
           var rating = results[i].rating;
 
           var p = $("<p>").text("Rating: " + rating);
+          //Added pictureGif so wwe can call this to animate and remove characters from the string
 
-          var personImage = $("<img>");
-          personImage.attr("src", results[i].images.fixed_height_still.url);
+          var personImage = $("<img class = 'pictureGif' data-state = 'still'>");
+
+          //Define the variables for the still and animated gifs
+
+          var stillGif = (results[i].images.fixed_height_still.url);
+          var animateGif = (results[i].images.fixed_height.url);
+
+          personImage.attr("src", stillGif);
+          personImage.attr("data-animate", animateGif);
+          personImage.attr("data-still",stillGif);
+
 
           gifDiv.prepend(p);
           gifDiv.prepend(personImage);
@@ -90,6 +100,23 @@ populate();
         }
       });
   });
+
+  //On click running a function to pause and unpause the gifs by adding 
+
+  $('.gifs-appear-here').on("click", ".pictureGif", function(){
+    var state = $(this).attr("data-state");
+
+    if (state === "still"){
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+    else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+
+  });
+
 
 
 
